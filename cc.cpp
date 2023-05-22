@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-long long cc(unsigned long long seed) {
+unsigned long long cc(unsigned long long seed) {
 
   unsigned long long highscore = 0;
   unsigned long long carrier = seed;
