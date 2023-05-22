@@ -2,33 +2,30 @@
 #include <string>
 using namespace std;
 
-long long cc(long long seed, long long seedlimit) {
+long long cc(unsigned long long seed) {
 
-  int repCount = 0;
-  long long highscore = 0;
+  unsigned long long highscore = 0;
+  unsigned long long carrier = seed;
 
-  while (seed < seedlimit) {
+  while (true) {
 
-    if (seed == 1) {
-      repCount++;
+    if (carrier == 4) {
+          cout << "Conjecture true for seed " << seed << endl;
+          break;
     }
 
-    if (seed % 2 == 0) {
-      seed /= 2;
+    if (carrier % 2 == 0) {
+      carrier /= 2;
     }
 
-    if (seed % 2 != 0) {
-      seed = seed * 3 + 1;
+    if (carrier % 2 != 0) {
+      carrier = carrier * 3 + 1;
     }
 
-    if (highscore < seed) {
-      highscore = seed;
+    if (highscore < carrier) {
+      highscore = carrier;
     }
 
-    if (repCount == 3) {
-      repCount = 0;
-      cout << "New High Score: " << highscore << endl;
-    }
   }
 
   return highscore;
@@ -38,19 +35,23 @@ long long cc(long long seed, long long seedlimit) {
 
 int main() {
 
+ start:
   cout << "Please enter a seed (long long): " << endl;
-  long long userseed = 0;
-  long long upperlimit = 0;
+  unsigned long long userseed = 0;
   cin >> userseed;
 
-  cout << "Please enter an upper limit (long long): ";
-  cin >> upperlimit;
+  userseed = cc(userseed);
 
-  userseed = cc(userseed, upperlimit);
+  cout << "Final peak: " << userseed << endl << endl;
 
-  cout << "Final peak: " << userseed << endl << "Impressed? 😏";
+  cout << "Repeat the process with a new seed? Yes or No." << endl;
+  string response;
+  cin >> response;
 
-  
+  if (response == "y" || response == "Y" || response == "yes" || response == "Yes") {
+    goto start;
+  }
 
   return 0;
+
 }
