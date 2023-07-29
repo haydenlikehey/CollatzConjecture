@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-using namespace std;
+using std::cout, std::cin, std::string, std::endl;
 
 unsigned long long cc(unsigned long long seed) {
 
@@ -10,7 +10,7 @@ unsigned long long cc(unsigned long long seed) {
   while (true) {
 
     if (carrier == 4) {
-          cout << "Conjecture true for seed " << seed << endl;
+          cout << "Conjecture true for seed " << seed << "\n";
           break;
     }
 
@@ -36,13 +36,13 @@ unsigned long long cc(unsigned long long seed) {
 int main() {
 
  start:
-  cout << "Please enter a seed (long long): " << endl;
+  cout << "Please enter a seed (long long): ";
   unsigned long long userseed = 0;
   cin >> userseed;
 
   userseed = cc(userseed);
 
-  cout << "Final peak: " << userseed << endl << endl;
+  cout << "\nFinal peak: " << userseed << "\n\n";
 
   cout << "Repeat the process with a new seed? Yes or No." << endl;
   string response;
